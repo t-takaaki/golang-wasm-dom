@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Wasm Go</title>
+</head>
+<body>
+ <div id="sample">Hello World!</div>
+ <button id="button">click me</div>
+ <script src="./wasm_exec.js"></script> 
+ <script>
+   (async () => {
+     const go = new Go();
+     const { instance } = await WebAssembly.instantiateStreaming(fetch('sample.wasm'), go.importObject);
+     await go.run(instance);
+   })();
+ </script>
+</body>
+</html>
